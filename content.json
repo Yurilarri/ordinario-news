@@ -411,6 +411,8 @@
   ],
   "metrics": {
     "followers": 120000,
+    "tiktokFollowers": 92200,
+    "tiktokLikes": 2300000,
     "avgViews": 70851,
     "avgNote": "Média dos 13 Reels mais recentes, sem contar os fixados no perfil.",
     "asOf": "2026-11-01"

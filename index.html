@@ -320,7 +320,10 @@ a.vid:hover{border-color:var(--line-2);transform:translateY(-2px)}
 .vid-stats{display:flex;flex-wrap:wrap;gap:3px 10px;margin-top:2px;font-style:normal;color:var(--yellow);font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
 .vid-stats i{display:inline-flex;align-items:center;gap:4px;font-style:normal}
 .vid-stats .i{width:14px;height:14px}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.stat.s2{grid-column:span 2}
+.stat.s3{grid-column:span 3}
+.stat.s6{grid-column:span 6}
 @media (min-width:640px){.stats{gap:12px}}
 .stat{display:grid;gap:5px;align-content:start;min-width:0;padding:13px 11px;border-radius:var(--r);background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line)}
 @media (min-width:640px){.stat{padding:18px}}
@@ -786,11 +789,17 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
     var m = S.metrics, items = [];
     var top = S.highlights.reduce(function (a, h) { return Math.max(a, Number(h.views) || 0); }, 0);
     if (m.followers) items.push([fmtCount(m.followers), 'seguidores no Instagram']);
+    if (m.tiktokFollowers) items.push([fmtCount(m.tiktokFollowers), 'seguidores no TikTok']);
+    if (m.tiktokLikes) items.push([fmtCount(m.tiktokLikes), 'curtidas no TikTok']);
     if (m.avgViews) items.push([fmtCount(m.avgViews), 'visualizações em média por Reel']);
     if (top) items.push([fmtCount(top), 'visualizações no vídeo mais visto']);
     if (!items.length) return '';
-    var note = [m.avgNote, m.asOf ? 'Números públicos do Instagram em ' + fmtLong(m.asOf) + '.' : ''].filter(Boolean).join(' ');
-    return '<div class="stats">' + items.map(function (x) { return '<div class="stat"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>' +
+    var where = m.tiktokFollowers || m.tiktokLikes ? 'do Instagram e do TikTok' : 'do Instagram';
+    var note = [m.avgNote, m.asOf ? 'Números públicos ' + where + ' em ' + fmtLong(m.asOf) + '.' : ''].filter(Boolean).join(' ');
+    var n = items.length;
+    /* grade de 6 colunas: as linhas sempre fecham, com 3 cartões em cima e 2 embaixo quando são 5 */
+    function span(i) { return n % 3 === 0 ? 2 : n === 5 ? (i < 3 ? 2 : 3) : n === 1 ? 6 : 3; }
+    return '<div class="stats">' + items.map(function (x, i) { return '<div class="stat s' + span(i) + '"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>' +
       (note ? '<p class="stats-note">' + esc(note) + '</p>' : '');
   }
   function highlightsRow() {
@@ -1115,7 +1124,9 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
       label: 'Números', single: true, obj: function () { return S.metrics; },
       hint: 'Números mostrados para quem quer anunciar. Confira no Instagram antes de atualizar e mude a data junto.',
       fields: [
-        { k: 'followers', l: 'Seguidores', t: 'count', h: 'Pode escrever 120 mil, 1,2 mi ou 3.467.' },
+        { k: 'followers', l: 'Seguidores no Instagram', t: 'count', h: 'Pode escrever 120 mil, 1,2 mi ou 3.467.' },
+        { k: 'tiktokFollowers', l: 'Seguidores no TikTok', t: 'count' },
+        { k: 'tiktokLikes', l: 'Curtidas no TikTok', t: 'count' },
         { k: 'avgViews', l: 'Média de visualizações por Reel', t: 'count' },
         { k: 'avgNote', l: 'Como a média foi calculada', t: 'text' },
         { k: 'asOf', l: 'Data dos números', t: 'date' }
