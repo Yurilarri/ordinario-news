@@ -195,6 +195,27 @@
       "segment": "clinicas",
       "cover": "images/DerhJG9EbcP.jpg",
       "url": "https://www.instagram.com/p/DerhJG9EbcP/"
+    },
+    {
+      "id": "ig-DektAfttTs8",
+      "title": "Um refúgio para sair da rotina e curtir a natureza",
+      "segment": "lazer",
+      "cover": "images/DektAfttTs8.jpg",
+      "url": "https://www.instagram.com/reel/DektAfttTs8/"
+    },
+    {
+      "id": "ig-DcUhFTrt2y4",
+      "title": "Gorila Minimalistic: outlet de moda infantil em Maracanaú",
+      "segment": "roupas",
+      "cover": "images/DcUhFTrt2y4.jpg",
+      "url": "https://www.instagram.com/reel/DcUhFTrt2y4/"
+    },
+    {
+      "id": "ig-DbtpehMBqH8",
+      "title": "Drumond Casual: segunda unidade no North Shopping Maracanaú",
+      "segment": "roupas",
+      "cover": "images/DbtpehMBqH8.jpg",
+      "url": "https://www.instagram.com/reel/DbtpehMBqH8/"
     }
   ],
   "places": [
@@ -248,6 +269,32 @@
       "image": "images/DerhJG9EbcP.jpg",
       "description": "Clínica credenciada do Detran em Maracanaú. Exames médicos, psicotécnicos e toxicológicos para primeira habilitação, renovação da CNH e adição de categoria.",
       "videoUrl": "https://www.instagram.com/p/DerhJG9EbcP/",
+      "postUrl": ""
+    },
+    {
+      "id": "ig-gorila-minimalistic",
+      "segment": "roupas",
+      "name": "Gorila Minimalistic",
+      "address": "Rua 25, nº 225, Jereissati I, Maracanaú",
+      "contact": "",
+      "whatsapp": "",
+      "instagram": "@gorilaminimalistic",
+      "image": "images/DcUhFTrt2y4.jpg",
+      "description": "Bazar de fábrica de moda infantil, com compra a partir de uma peça e parcelamento em até 4x sem juros. Também vende pelo site gorilaminimalistic.com.br.",
+      "videoUrl": "https://www.instagram.com/reel/DcUhFTrt2y4/",
+      "postUrl": ""
+    },
+    {
+      "id": "ig-drumond-casual",
+      "segment": "roupas",
+      "name": "Drumond Casual",
+      "address": "North Shopping Maracanaú",
+      "contact": "",
+      "whatsapp": "",
+      "instagram": "@drumond_casual",
+      "image": "images/DbtpehMBqH8.jpg",
+      "description": "Segunda unidade da marca, no North Shopping Maracanaú, com inauguração anunciada para 8 de agosto de 2026.",
+      "videoUrl": "https://www.instagram.com/reel/DbtpehMBqH8/",
       "postUrl": ""
     }
   ],
