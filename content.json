@@ -1,0 +1,303 @@
+{
+  "version": 2,
+  "profile": {
+    "logo": "",
+    "mascot": "",
+    "introTitle": "Você chegou ao perfil do Ordinário News!",
+    "introText": "Aqui você encontra indicações locais de Maracanaú, os melhores eventos, notícias, novidades e tudo que movimenta a nossa cidade. Explore nossos vídeos, descubra lugares para conhecer e acompanhe o que está acontecendo por aqui."
+  },
+  "social": {
+    "instagram": "https://instagram.com/ordinarioof?exln=MTk1OXN1MzY4Mml3eQ%3D%3D",
+    "instagramHandle": "@ordinarioof",
+    "tiktok": "https://www.tiktok.com/@ordinarioof?_r=1&_t=ZS-9AX2mg2Luev",
+    "tiktokHandle": "@ordinarioof",
+    "whatsapp": "https://wa.me/message/KYMLNEH3LWH6B1",
+    "kwai": "",
+    "kwaiHandle": ""
+  },
+  "segments": [
+    {
+      "id": "restaurantes",
+      "name": "Restaurantes",
+      "group": "comida"
+    },
+    {
+      "id": "bares",
+      "name": "Bares",
+      "group": "comida"
+    },
+    {
+      "id": "cafes",
+      "name": "Cafés",
+      "group": "comida"
+    },
+    {
+      "id": "lanchonetes",
+      "name": "Lanchonetes",
+      "group": "comida"
+    },
+    {
+      "id": "pastelarias",
+      "name": "Pastelarias",
+      "group": "comida"
+    },
+    {
+      "id": "pizzarias",
+      "name": "Pizzarias",
+      "group": "comida"
+    },
+    {
+      "id": "sorveterias",
+      "name": "Sorveterias",
+      "group": "comida"
+    },
+    {
+      "id": "hamburguerias",
+      "name": "Hamburguerias",
+      "group": "comida"
+    },
+    {
+      "id": "padarias",
+      "name": "Padarias",
+      "group": "comida"
+    },
+    {
+      "id": "saloes",
+      "name": "Salões de beleza",
+      "group": "beleza"
+    },
+    {
+      "id": "barbearias",
+      "name": "Barbearias",
+      "group": "beleza"
+    },
+    {
+      "id": "manicure",
+      "name": "Manicure e estética",
+      "group": "beleza"
+    },
+    {
+      "id": "academias",
+      "name": "Academias",
+      "group": "beleza"
+    },
+    {
+      "id": "roupas",
+      "name": "Lojas de roupas",
+      "group": "compras"
+    },
+    {
+      "id": "calcados",
+      "name": "Calçados e acessórios",
+      "group": "compras"
+    },
+    {
+      "id": "moveis",
+      "name": "Móveis e decoração",
+      "group": "compras"
+    },
+    {
+      "id": "eletronicos",
+      "name": "Eletrônicos, informática e iPhones",
+      "group": "compras"
+    },
+    {
+      "id": "carros",
+      "name": "Lojas de carros e motos",
+      "group": "compras"
+    },
+    {
+      "id": "clinicas",
+      "name": "Clínicas",
+      "group": "saude"
+    },
+    {
+      "id": "oticas",
+      "name": "Óticas",
+      "group": "saude"
+    },
+    {
+      "id": "farmacias",
+      "name": "Farmácias",
+      "group": "saude"
+    },
+    {
+      "id": "mercados",
+      "name": "Mercados",
+      "group": "servicos"
+    },
+    {
+      "id": "acougues",
+      "name": "Açougues",
+      "group": "servicos"
+    },
+    {
+      "id": "oficinas",
+      "name": "Oficinas",
+      "group": "servicos"
+    },
+    {
+      "id": "petshops",
+      "name": "Pet shops",
+      "group": "servicos"
+    },
+    {
+      "id": "outros",
+      "name": "Outros serviços",
+      "group": "servicos"
+    },
+    {
+      "id": "cursos",
+      "name": "Cursos",
+      "group": "educacao"
+    },
+    {
+      "id": "escolas",
+      "name": "Escolas",
+      "group": "educacao"
+    },
+    {
+      "id": "lazer",
+      "name": "Lazer",
+      "group": "lazer"
+    },
+    {
+      "id": "entretenimento",
+      "name": "Entretenimento",
+      "group": "lazer"
+    }
+  ],
+  "videos": [
+    {
+      "id": "ig-DfKic_6ESG5",
+      "title": "Tom de Costura: ajustes e consertos de roupas",
+      "segment": "outros",
+      "cover": "images/DfKic_6ESG5.jpg",
+      "url": "https://www.instagram.com/p/DfKic_6ESG5/"
+    },
+    {
+      "id": "ig-DfI3LxajSex",
+      "title": "Adeildo iPhones: iPhone na promissória para comerciantes",
+      "segment": "eletronicos",
+      "cover": "images/DfI3LxajSex.jpg",
+      "url": "https://www.instagram.com/p/DfI3LxajSex/"
+    },
+    {
+      "id": "ig-DfCuDxbxGqb",
+      "title": "Pega na Moda: inauguração com peças de R$ 10 a R$ 50",
+      "segment": "roupas",
+      "cover": "images/DfCuDxbxGqb.jpg",
+      "url": "https://www.instagram.com/reel/DfCuDxbxGqb/"
+    },
+    {
+      "id": "ig-DerhJG9EbcP",
+      "title": "STARTRAN: exames para tirar ou renovar a CNH",
+      "segment": "clinicas",
+      "cover": "images/DerhJG9EbcP.jpg",
+      "url": "https://www.instagram.com/p/DerhJG9EbcP/"
+    }
+  ],
+  "places": [
+    {
+      "id": "ig-pega-na-moda",
+      "segment": "roupas",
+      "name": "Pega na Moda",
+      "address": "",
+      "contact": "",
+      "whatsapp": "",
+      "instagram": "",
+      "image": "images/DfCuDxbxGqb.jpg",
+      "description": "Loja de roupas que inaugurou em outubro de 2026 com peças de R$ 10 a R$ 50 e um setor de bolsas e sandálias a R$ 20 cada.",
+      "videoUrl": "https://www.instagram.com/reel/DfCuDxbxGqb/",
+      "postUrl": ""
+    },
+    {
+      "id": "ig-adeildo-iphones",
+      "segment": "eletronicos",
+      "name": "Adeildo iPhones",
+      "address": "",
+      "contact": "",
+      "whatsapp": "",
+      "instagram": "@adeildo_iphones_",
+      "image": "images/DfI3LxajSex.jpg",
+      "description": "Loja de iPhones em Maracanaú. Para comerciantes, oferece compra na promissória sem consulta ao SPC e Serasa. Consulte os aparelhos e as condições de pagamento.",
+      "videoUrl": "https://www.instagram.com/p/DfI3LxajSex/",
+      "postUrl": ""
+    },
+    {
+      "id": "ig-tom-de-costura",
+      "segment": "outros",
+      "name": "Tom de Costura",
+      "address": "Rua 48, nº 51-A, Jereissati 2, Maracanaú-CE",
+      "contact": "",
+      "whatsapp": "(85) 98962-3367",
+      "instagram": "@tomdecostura",
+      "image": "images/DfKic_6ESG5.jpg",
+      "description": "Ajustes e consertos de roupas, customização de abadás e roupas de festa, conserto de sapatos, lavagem de tênis e tingimento. Fica ao lado do North Shopping Maracanaú.",
+      "videoUrl": "https://www.instagram.com/p/DfKic_6ESG5/",
+      "postUrl": ""
+    },
+    {
+      "id": "ig-startran",
+      "segment": "clinicas",
+      "name": "STARTRAN – Clínica Médica e Psicológica",
+      "address": "",
+      "contact": "",
+      "whatsapp": "",
+      "instagram": "@startran.ce",
+      "image": "images/DerhJG9EbcP.jpg",
+      "description": "Clínica credenciada do Detran em Maracanaú. Exames médicos, psicotécnicos e toxicológicos para primeira habilitação, renovação da CNH e adição de categoria.",
+      "videoUrl": "https://www.instagram.com/p/DerhJG9EbcP/",
+      "postUrl": ""
+    }
+  ],
+  "events": [],
+  "news": [
+    {
+      "id": "ig-DfLnzNZDX2o",
+      "title": "Bazar on-line da Gorila Minimalistic está liberado no site",
+      "tag": "Bazar",
+      "date": "2026-10-31",
+      "image": "images/DfLnzNZDX2o.jpg",
+      "url": "https://www.instagram.com/p/DfLnzNZDX2o/",
+      "summary": "Moda infantil com peças a partir de R$ 17, compra a partir de uma peça e parcelamento em até 4x sem juros. O bazar on-line fica disponível até segunda-feira, 2 de novembro."
+    },
+    {
+      "id": "ig-DfIhDekgbeX",
+      "title": "Bazar presencial da Gorila Minimalistic no sábado, 31 de outubro",
+      "tag": "Bazar",
+      "date": "2026-10-30",
+      "image": "images/DfIhDekgbeX.jpg",
+      "url": "https://www.instagram.com/p/DfIhDekgbeX/",
+      "summary": "Das 8h às 17h, com peças a partir de R$ 17, compra a partir de uma peça e parcelamento em até 4x sem juros."
+    },
+    {
+      "id": "ig-De5RE8UER3A",
+      "title": "Começa o bazar on-line da Gorila Minimalistic",
+      "tag": "Bazar",
+      "date": "2026-10-24",
+      "image": "images/De5RE8UER3A.jpg",
+      "url": "https://www.instagram.com/p/De5RE8UER3A/",
+      "summary": "Roupas infantis, das lisas às estampadas, a partir de R$ 17, com compra a partir de uma peça e parcelamento em até 4x sem juros."
+    },
+    {
+      "id": "ig-De2oF6vkda5",
+      "title": "Bazar presencial da Gorila Minimalistic no sábado, 24 de outubro",
+      "tag": "Bazar",
+      "date": "2026-10-23",
+      "image": "images/De2oF6vkda5.jpg",
+      "url": "https://www.instagram.com/p/De2oF6vkda5/",
+      "summary": "Roupas infantis a partir de R$ 17, das 8h às 17h, na Rua 25, nº 225, Jereissati I, Maracanaú. Compra a partir de uma peça e parcelamento em até 4x sem juros."
+    },
+    {
+      "id": "ig-DesrPrujTA8",
+      "title": "Bazar on-line da Gorila Minimalistic tem peças a partir de R$ 17",
+      "tag": "Bazar",
+      "date": "2026-10-19",
+      "image": "images/DesrPrujTA8.jpg",
+      "url": "https://www.instagram.com/p/DesrPrujTA8/",
+      "summary": "Roupas para crianças sem sair de casa, com parcelamento em até 4x sem juros."
+    }
+  ],
+  "partners": []
+}
