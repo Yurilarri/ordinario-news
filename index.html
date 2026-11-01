@@ -234,6 +234,7 @@ a.tile:active{transform:scale(.99)}
 .hscroll::-webkit-scrollbar{display:none}
 .hscroll .vid{flex:0 0 148px;scroll-snap-align:start;scroll-margin-left:var(--gutter)}
 @media (min-width:880px){.hscroll .vid{flex-basis:186px}}
+@media (min-width:1160px){.hscroll .vid{flex-basis:calc((100% - 50px) / 6)}}
 
 /* ---------- áreas ---------- */
 .view{padding-block:32px 8px}
@@ -314,6 +315,22 @@ a.tile:active{transform:scale(.99)}
 a.vid:hover{border-color:var(--line-2);transform:translateY(-2px)}
 .vid-cover{position:relative;display:block;aspect-ratio:4/5;max-width:100%;overflow:hidden;background:linear-gradient(160deg,var(--surface-3),var(--surface))}
 .vid-cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center bottom}
+.vid-cover.tall{aspect-ratio:9/16}
+.vid-cover.tall img{object-position:center}
+.vid-stats{display:flex;flex-wrap:wrap;gap:3px 10px;margin-top:2px;font-style:normal;color:var(--yellow);font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.vid-stats i{display:inline-flex;align-items:center;gap:4px;font-style:normal}
+.vid-stats .i{width:14px;height:14px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.stats{gap:12px}}
+.stat{display:grid;gap:5px;align-content:start;min-width:0;padding:13px 11px;border-radius:var(--r);background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line)}
+@media (min-width:640px){.stat{padding:18px}}
+.stat b{font-family:var(--display);font-weight:600;font-size:clamp(18px,5vw,34px);line-height:1.1;letter-spacing:-.03em;white-space:nowrap}
+.stat span{color:var(--text-2);font-size:12.5px;line-height:1.3}
+@media (min-width:640px){.stat span{font-size:14px}}
+.stats-note{margin-top:10px;color:var(--text-3);font-size:12.5px;line-height:1.45;max-width:70ch}
+.sh-sub{margin-top:26px}
+.sh-sub h2{font-size:18px}
+.results-cta{margin-top:18px}
 .vid-play{position:absolute;z-index:1;top:10px;right:10px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(5,7,15,.55);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);color:#fff}
 .vid-play svg{width:13px;height:13px;margin-left:2px;fill:currentColor}
 .vid-meta{display:flex;flex-direction:column;gap:4px;flex:1;padding:10px 12px 12px;min-width:0}
@@ -489,7 +506,12 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
   'use strict';
 
   /* ===================== dados ===================== */
-  var S = clone(DATA);
+  function normalize(d) {
+    d.highlights = d.highlights || [];
+    d.metrics = d.metrics || {};
+    return d;
+  }
+  var S = clone(normalize(DATA));
   var LOCAL_IMG = {};
   var DRAFT_KEY = 'ordinario-news-rascunho';
   var FONTS = 'https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Sora:wght@600;700&display=swap';
@@ -557,6 +579,18 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
     if (/^data:image\/(png|jpe?g|webp|gif);base64,/i.test(u)) return u;
     if (/^https:\/\//i.test(u) || u.indexOf('/_blob/') === 0 || /^images\/[\w.-]+$/.test(u)) return u;
     return '';
+  }
+  function fmtCount(n) {
+    n = Number(n);
+    return n > 0 ? new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n) : '';
+  }
+  /* aceita 3.467, 850 mil, 1,2 mi */
+  function parseCount(v) {
+    var m = /^([\d.,]+)\s*(mil|mi|k|m)?$/.exec(norm(v).trim());
+    if (!m) return null;
+    var n = m[2] ? parseFloat(m[1].replace(/\./g, '').replace(',', '.')) : parseInt(m[1].replace(/[.,]/g, ''), 10);
+    if (isNaN(n)) return null;
+    return Math.round(n * (m[2] === 'mil' || m[2] === 'k' ? 1000 : m[2] ? 1000000 : 1));
   }
   function whatsHref(v) {
     v = String(v || '').trim();
@@ -636,6 +670,8 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
     arrowUp: '<path d="M7 7h10v10"/><path d="M7 17 17 7"/>',
     back: '<path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>',
     chevron: '<path d="m9 18 6-6-6-6"/>',
+    eye: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>',
+    heartLine: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
     image: '<rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/>',
     utensils: '<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>',
     scissors: '<circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/>',
@@ -711,9 +747,9 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
       if (has(p.name, p.description, p.address)) out.push('<a class="res" ' + goAttrs('indicacoes', p.segment) + '><b>' + esc(p.name) + '</b><small>' + esc(segName(p.segment) || 'Indicação') + '</small>' + I('chevron') + '</a>');
     });
     if (scope === 'inicio') {
-      S.videos.forEach(function (v) {
+      S.videos.concat(S.highlights).forEach(function (v) {
         var u = href(v.url);
-        if (u && has(v.title)) out.push('<a class="res" ' + ext(u) + '><b>' + esc(v.title) + '</b><small>Vídeo</small>' + I('arrowUp') + '</a>');
+        if (u && has(v.title, v.topic)) out.push('<a class="res" ' + ext(u) + '><b>' + esc(v.title) + '</b><small>Vídeo</small>' + I('arrowUp') + '</a>');
       });
       upcoming().forEach(function (e) {
         if (has(e.name, e.place, e.type)) out.push('<a class="res" ' + goAttrs('eventos') + '><b>' + esc(e.name) + '</b><small>Evento · ' + esc(fmtLong(e.date)) + '</small>' + I('chevron') + '</a>');
@@ -734,6 +770,37 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
     var inner = '<span class="vid-cover">' + img(v.cover, '') + '<span class="vid-play">' + PLAY + '</span></span><span class="vid-meta">' +
       (seg ? '<small>' + esc(seg) + '</small>' : '') + '<b>' + esc(v.title) + '</b>' + (u ? '<span>Assistir' + I('arrowUp') + '</span>' : '') + '</span>';
     return u ? '<a class="vid" ' + ext(u) + '>' + inner + '</a>' : '<div class="vid">' + inner + '</div>';
+  }
+  function highlightCard(h) {
+    var u = href(h.url), views = fmtCount(h.views), likes = fmtCount(h.likes);
+    var inner = '<span class="vid-cover tall">' + img(h.cover, '') + '<span class="vid-play">' + PLAY + '</span></span><span class="vid-meta">' +
+      (h.topic ? '<small>' + esc(h.topic) + '</small>' : '') + '<b>' + esc(h.title) + '</b>' +
+      '<em class="vid-stats">' + (views ? '<i>' + I('eye') + views + '</i>' : '') + (likes ? '<i>' + I('heartLine') + likes + '</i>' : '') + '</em>' +
+      (u ? '<span>Assistir' + I('arrowUp') + '</span>' : '') + '</span>';
+    return u ? '<a class="vid" ' + ext(u) + '>' + inner + '</a>' : '<div class="vid">' + inner + '</div>';
+  }
+  function highlightsSorted() {
+    return S.highlights.slice().sort(function (a, b) { return (Number(b.views) || 0) - (Number(a.views) || 0); });
+  }
+  function statsBlock() {
+    var m = S.metrics, items = [];
+    var top = S.highlights.reduce(function (a, h) { return Math.max(a, Number(h.views) || 0); }, 0);
+    if (m.followers) items.push([fmtCount(m.followers), 'seguidores no Instagram']);
+    if (m.avgViews) items.push([fmtCount(m.avgViews), 'visualizações em média por Reel']);
+    if (top) items.push([fmtCount(top), 'visualizações no vídeo mais visto']);
+    if (!items.length) return '';
+    var note = [m.avgNote, m.asOf ? 'Números públicos do Instagram em ' + fmtLong(m.asOf) + '.' : ''].filter(Boolean).join(' ');
+    return '<div class="stats">' + items.map(function (x) { return '<div class="stat"><b>' + esc(x[0]) + '</b><span>' + esc(x[1]) + '</span></div>'; }).join('') + '</div>' +
+      (note ? '<p class="stats-note">' + esc(note) + '</p>' : '');
+  }
+  function highlightsRow() {
+    return S.highlights.length ? '<div class="sh sh-sub"><h2>Vídeos mais vistos</h2></div><div class="hscroll">' + highlightsSorted().map(highlightCard).join('') + '</div>' : '';
+  }
+  function resultsBlock(withCta) {
+    var stats = statsBlock(), row = highlightsRow();
+    if (!stats && !row) return '';
+    return '<section class="block"><div class="sh"><h2>Os números do Ordinário News</h2></div>' + stats + row +
+      (withCta ? '<div class="results-cta">' + waBtn('Anunciar no Ordinário News') + '</div>' : '') + '</section>';
   }
   function placeCard(p) {
     var ig = igHref(p.instagram), vid = href(p.videoUrl), wa = whatsHref(p.whatsapp), maps = mapsHref(p), meta = [], acts = [];
@@ -797,7 +864,7 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
       tile('eventos', 'ticket', 'Eventos', 'Programação e ingressos') +
       tile('noticias', 'news', 'Notícias', 'Novidades da cidade') +
       tile('parceiros', 'handshake', 'Parceiros', 'Empresas e marcas') +
-      '</div></section></div>';
+      '</div></section></div>' + resultsBlock(true);
 
     if (S.videos.length) {
       html += '<section class="block"><div class="sh"><h2>Vídeos de indicação</h2><a ' + goAttrs('videos') + '>Ver todos</a></div><div class="hscroll">' + S.videos.slice(0, 8).map(videoCard).join('') + '</div></section>';
@@ -826,7 +893,9 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
         used.map(function (s) { return '<button type="button" class="pill' + (UI.vidSeg === s.id ? ' on' : '') + '" data-vidseg="' + esc(s.id) + '">' + esc(s.name) + '</button>'; }).join('') + '</div>' : '';
       body = filters + '<div class="vids">' + list.map(videoCard).join('') + '</div>';
     }
-    return head('Vídeos de indicação', 'Conheça um pouco do nosso trabalho', 'Lugares, empresas, serviços e experiências de Maracanaú.') + body;
+    var results = statsBlock() + highlightsRow();
+    return head('Vídeos de indicação', 'Conheça um pouco do nosso trabalho', 'Lugares, empresas, serviços e experiências de Maracanaú.') +
+      results + (results ? '<div class="sh sh-sub"><h2>Indicações em vídeo</h2></div>' : '') + body;
   }
 
   function viewPlaces() {
@@ -894,9 +963,9 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
   }
 
   function viewPartners() {
-    var body;
+    var body, results = resultsBlock(true);
     if (!S.partners.length) {
-      body = none('handshake', 'Os parceiros aparecem aqui em breve', 'Quer apresentar sua empresa ou marca? Fale com a gente.', waBtn('Quero ser parceiro', 'btn-sm'));
+      body = none('handshake', 'Os parceiros aparecem aqui em breve', 'Quer apresentar sua empresa ou marca? Fale com a gente.', results ? '' : waBtn('Quero ser parceiro', 'btn-sm'));
     } else {
       body = '<div class="partners">' + S.partners.map(function (p) {
         var u = href(p.url), logo = imgSrc(p.logo);
@@ -905,7 +974,7 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
         return u ? '<a class="partner" ' + ext(u) + '>' + inner + '</a>' : '<div class="partner">' + inner + '</div>';
       }).join('') + '</div>';
     }
-    return head('', 'Nossos parceiros', 'Empresas e marcas parceiras do Ordinário News.') + body;
+    return head('', 'Nossos parceiros', 'Empresas e marcas parceiras do Ordinário News.') + body + results;
   }
 
   function viewContact() {
@@ -1042,6 +1111,31 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
         { k: 'url', l: 'Link para assistir', t: 'url', req: true, h: 'Link do Reels, TikTok ou outro vídeo.' }
       ]
     },
+    metrics: {
+      label: 'Números', single: true, obj: function () { return S.metrics; },
+      hint: 'Números mostrados para quem quer anunciar. Confira no Instagram antes de atualizar e mude a data junto.',
+      fields: [
+        { k: 'followers', l: 'Seguidores', t: 'count', h: 'Pode escrever 120 mil, 1,2 mi ou 3.467.' },
+        { k: 'avgViews', l: 'Média de visualizações por Reel', t: 'count' },
+        { k: 'avgNote', l: 'Como a média foi calculada', t: 'text' },
+        { k: 'asOf', l: 'Data dos números', t: 'date' }
+      ]
+    },
+    highlights: {
+      label: 'Mais vistos', item: 'vídeo', novo: 'Novo vídeo', list: function () { return S.highlights; },
+      hint: 'Aparecem do mais visto para o menos visto, com as visualizações e curtidas que você informar.',
+      title: function (i) { return i.title; }, sub: function (i) { return [fmtCount(i.views) && fmtCount(i.views) + ' visualizações', fmtCount(i.likes) && fmtCount(i.likes) + ' curtidas'].filter(Boolean).join(' · '); }, thumb: function (i) { return i.cover; },
+      sort: function (a, b) { return (Number(b.views) || 0) - (Number(a.views) || 0); },
+      fields: [
+        { k: 'title', l: 'Título', t: 'text', req: true },
+        { k: 'topic', l: 'Assunto', t: 'text', h: 'Ex.: São João de Maracanaú.' },
+        { k: 'cover', l: 'Capa (vertical, como um Reels)', t: 'image', max: 720 },
+        { k: 'url', l: 'Link para assistir', t: 'url', req: true },
+        { k: 'views', l: 'Visualizações', t: 'count', req: true, h: 'Pode escrever 850 mil, 1,2 mi ou 3.467.' },
+        { k: 'likes', l: 'Curtidas', t: 'count' },
+        { k: 'date', l: 'Data do vídeo', t: 'date' }
+      ]
+    },
     places: {
       label: 'Indicações', item: 'indicação', novo: 'Nova indicação', list: function () { return S.places; }, order: true, filterBySeg: true,
       hint: 'Cada indicação aparece na aba do segmento escolhido.',
@@ -1114,7 +1208,7 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
       ]
     }
   };
-  var COL_ORDER = ['profile', 'social', 'videos', 'places', 'segments', 'events', 'news', 'partners'];
+  var COL_ORDER = ['profile', 'social', 'videos', 'highlights', 'metrics', 'places', 'segments', 'events', 'news', 'partners'];
 
   function dataJSON(o) { return JSON.stringify(o); }
   var PUBLISHED_JSON = dataJSON(DATA);
@@ -1308,6 +1402,11 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
       if (f.t === 'url' && d[f.k] && !href(d[f.k])) { formError('O campo "' + f.l + '" precisa ser um link começando com https://'); return; }
       if (f.t === 'url' && d[f.k]) d[f.k] = href(d[f.k]);
       if (f.t === 'whats' && d[f.k] && !whatsHref(d[f.k])) { formError('O campo "' + f.l + '" precisa ter o número com DDD, como 85 90000-0000.'); return; }
+      if (f.t === 'count' && d[f.k]) {
+        var cnt = parseCount(d[f.k]);
+        if (cnt === null) { formError('O campo "' + f.l + '" precisa ser um número, como 850 mil, 1,2 mi ou 3.467.'); return; }
+        d[f.k] = cnt;
+      }
     }
     if (c.single) {
       var obj = c.obj();
@@ -1368,7 +1467,7 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
   function eachImage(d, fn) {
     d.profile.logo = fn(d.profile.logo);
     d.profile.mascot = fn(d.profile.mascot);
-    [['videos', 'cover'], ['places', 'image'], ['events', 'image'], ['news', 'image'], ['partners', 'logo']].forEach(function (p) {
+    [['videos', 'cover'], ['highlights', 'cover'], ['places', 'image'], ['events', 'image'], ['news', 'image'], ['partners', 'logo']].forEach(function (p) {
       d[p[0]].forEach(function (it) { it[p[1]] = fn(it[p[1]]); });
     });
   }
@@ -1563,6 +1662,7 @@ a.link.wa:hover{background:var(--green);filter:brightness(1.06)}
 
   function restoreDraft() {
     var draft = readDraft();
+    if (draft) normalize(draft);
     if (draft && dataJSON(draft) !== PUBLISHED_JSON) {
       S = draft;
       ED.msg = { kind: 'info', text: 'Recuperamos alterações que você fez e ainda não publicou. Revise e publique, ou descarte.' };

@@ -299,5 +299,73 @@
       "summary": "Roupas para crianças sem sair de casa, com parcelamento em até 4x sem juros."
     }
   ],
-  "partners": []
+  "partners": [],
+  "highlights": [
+    {
+      "id": "ig-DI98JKDyYeb",
+      "title": "Clima do São João de Maracanaú",
+      "topic": "São João de Maracanaú",
+      "cover": "images/DI98JKDyYeb.jpg",
+      "url": "https://www.instagram.com/reel/DI98JKDyYeb/",
+      "views": 1200000,
+      "likes": 77000,
+      "date": "2025-04-27"
+    },
+    {
+      "id": "ig-DK9mXIZMFPz",
+      "title": "Esperando Jorge e Mateus e Seu Desejo no São João",
+      "topic": "São João de Maracanaú",
+      "cover": "images/DK9mXIZMFPz.jpg",
+      "url": "https://www.instagram.com/reel/DK9mXIZMFPz/",
+      "views": 850000,
+      "likes": 35000,
+      "date": "2025-06-16"
+    },
+    {
+      "id": "ig-DbJSem-RWnb",
+      "title": "A maré da praia da Requenguela, em Icapuí",
+      "topic": "Curiosidades do Ceará",
+      "cover": "images/DbJSem-RWnb.jpg",
+      "url": "https://www.instagram.com/reel/DbJSem-RWnb/",
+      "views": 385000,
+      "likes": 31000,
+      "date": "2026-07-23"
+    },
+    {
+      "id": "ig-DKvBdvrSLpx",
+      "title": "Já na espera do show do Natanzinho no São João",
+      "topic": "São João de Maracanaú",
+      "cover": "images/DKvBdvrSLpx.jpg",
+      "url": "https://www.instagram.com/reel/DKvBdvrSLpx/",
+      "views": 373000,
+      "likes": 16000,
+      "date": "2025-06-10"
+    },
+    {
+      "id": "ig-Ddl3WRUR-Db",
+      "title": "Estudante cearense cria conservante natural com mandacaru e carnaúba",
+      "topic": "Notícias do Ceará",
+      "cover": "images/Ddl3WRUR-Db.jpg",
+      "url": "https://www.instagram.com/reel/Ddl3WRUR-Db/",
+      "views": 228000,
+      "likes": 18000,
+      "date": "2026-09-22"
+    },
+    {
+      "id": "ig-DbQ7xxOu_K3",
+      "title": "Leila Carvalho leva o nome do Ceará ao Miss Universe Brasil",
+      "topic": "Notícias do Ceará",
+      "cover": "images/DbQ7xxOu_K3.jpg",
+      "url": "https://www.instagram.com/reel/DbQ7xxOu_K3/",
+      "views": 80600,
+      "likes": 3935,
+      "date": "2026-07-26"
+    }
+  ],
+  "metrics": {
+    "followers": 120000,
+    "avgViews": 70851,
+    "avgNote": "Média dos 13 Reels mais recentes, sem contar os fixados no perfil.",
+    "asOf": "2026-11-01"
+  }
 }
